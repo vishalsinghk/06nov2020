@@ -1,63 +1,99 @@
 sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/model/json/JSONModel",
-	"./controller/HelloDialog",
-	"sap/ui/Device"
-], function (UIComponent, JSONModel, HelloDialog, Device) {
-	"use strict";
+	"sap/ui/core/sample/RoutingNestedComponent/base/BaseComponent"
+], function(BaseComponent) {
+		"use strict";
 
-	return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
-
-		metadata: {
-			manifest: "json"
-		},
-
-		init: function () {
-			// call the init function of the parent
-			UIComponent.prototype.init.apply(this, arguments);
-
-			// set data model
-			var oData = {
-				recipient: {
-					name: "World"
-				}
-			};
-			var oModel = new JSONModel(oData);
-			this.setModel(oModel);
-
-			// set device model
-			var oDeviceModel = new JSONModel(Device);
-			oDeviceModel.setDefaultBindingMode("OneWay");
-			this.setModel(oDeviceModel, "device");
-
-			// set dialog
-			this._helloDialog = new HelloDialog(this.getRootControl());
-
-			// create the views based on the url/hash
-			this.getRouter().initialize();
-
-		},
-
-		exit : function () {
-			this._helloDialog.destroy();
-			delete this._helloDialog;
-		},
-
-		openHelloDialog : function () {
-			this._helloDialog.open();
-		},
-
-		getContentDensityClass : function () {
-			if (!this._sContentDensityClass) {
-				if (!Device.support.touch) {
-					this._sContentDensityClass = "sapUiSizeCompact";
-				} else {
-					this._sContentDensityClass = "sapUiSizeCozy";
-				}
+		return BaseComponent.extend("sap.ui.core.sample.RoutingNestedComponent.Component", {
+			metadata: {
+				manifest: "json"
+			},
+			// define the events which are fired from the reuse components
+			//
+			// this component registers handler to those events and navigates
+			// to the other reuse components
+			//
+			// see the implementation in BaseComponent for processing the event
+			// mapping
+			eventMappings: {
+				suppliersComponent: [{
+					name: "toProduct",
+					route: "products",
+					componentTargetInfo: {
+						products: {
+							route: "detail",
+							parameters: {
+								id: "productID"
+							}
+						}
+					}
+				}],
+				productsComponent: [{
+					name: "toSupplier",
+					route: "suppliers",
+					componentTargetInfo: {
+						suppliers: {
+							route: "detail",
+							parameters: {
+								id: "supplierID"
+							},
+							componentTargetInfo: {
+								products: {
+									route: "list",
+									parameters: {
+										basepath: "supplierKey"
+									}
+								}
+							}
+						}
+					}
+				}, {
+					name: "toCategory",
+					route: "categories",
+					componentTargetInfo: {
+						categories: {
+							route: "detail",
+							parameters: {
+								id: "categoryID"
+							},
+							componentTargetInfo: {
+								products: {
+									route: "list",
+									parameters: {
+										basepath: "categoryKey"
+									}
+								}
+							}
+						}
+					}
+				}, {
+					name: "toProduct",
+					route: "products",
+					componentTargetInfo: {
+						products: {
+							route: "detail",
+							parameters: {
+								id: "productID"
+							}
+						}
+					}
+				}],
+				categoriesComponent: [{
+					name: "toProduct",
+					route: "products",
+					componentTargetInfo: {
+						products: {
+							route: "detail",
+							parameters: {
+								id: "productID"
+							}
+						}
+					}
+				}]
+			},
+			init: function() {
+				// call the init function of the parent
+				BaseComponent.prototype.init.apply(this, arguments);
 			}
-			return this._sContentDensityClass;
-		}
-
-	});
-
-});
+		});
+	}
+);

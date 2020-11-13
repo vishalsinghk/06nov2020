@@ -1,21 +1,20 @@
-html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
- 	margin-right: 0.125rem
+li.sapTntNavLIItemSelected[id$="suppliersItem"] > div.sapTntNavLIItem {
+	background-color: antiquewhite;
 }
 
-html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
- 	margin-left: 0.125rem
+li.sapTntNavLIItemSelected[id$="categoriesItem"] > div.sapTntNavLIItem {
+	background-color: aquamarine;
 }
 
-.myAppDemoWT .myCustomText {
-	display: inline-block;
-	font-weight: bold;
+li.sapTntNavLIItemSelected[id$="productsItem"] > div.sapTntNavLIItem {
+	background-color: lightblue;
 }
 
-/*  ProductRating */
-.myAppDemoWTProductRating {
-	padding: 0.75rem;
+.maxWidth100 {
+	max-width: 100%;
 }
 
-.myAppDemoWTProductRating .sapMRI {
-	vertical-align: initial;
+nav.sapMBreadcrumbs {
+	margin: 0 !important;
+	padding: 5px;
 }
