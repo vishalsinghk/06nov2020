@@ -1,17 +1,52 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/sample/RoutingNestedComponent/base/BaseController",
+	"sap/base/Log",
+	"sap/ui/model/json/JSONModel"
+], function(Controller, Log, JSONModel){
+	debugger;
 	"use strict";
+	return Controller.extend("sap.ui.core.sample.RoutingNestedComponent.controller.App", {
+		onInit: function(){
+			Log.info(this.getView().getControllerName(), "onInit");
 
-	return Controller.extend("sap.ui.demo.walkthrough.controller.App", {
+			this.getOwnerComponent().getRouter().attachRouteMatched(this._onRouteMatched, this);
+			this.getOwnerComponent().getRouter().attachBypassed(this._onBypassed, this);
 
-		onInit: function () {
-			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+			var oTitlesModel = new JSONModel();
+			this.getView().setModel(oTitlesModel, "titleModel");
+			this.getOwnerComponent().getRouter().attachTitleChanged(function (oEvent) {
+				oTitlesModel.setData(oEvent.getParameters());
+			});
 		},
 
-		onOpenDialog : function () {
-			this.getOwnerComponent().openHelloDialog();
+		_onRouteMatched: function(oEvent) {
+			debugger;
+			Log.info(this.getView().getControllerName(), "_onRouteMatched");
+			var oConfig = oEvent.getParameter("config");
+
+			// select the corresponding item in the left menu
+			this.setSelectedMenuItem(oConfig.name);
+		},
+
+		setSelectedMenuItem: function(sKey) {
+			debugger;
+			this.byId("navigationList").setSelectedKey(sKey);
+		},
+
+		_onBypassed: function(oEvent) {
+			var sHash = oEvent.getParameter("hash");
+			Log.info(
+				this.getView().getControllerName(),
+				"_onBypassed Hash=" + sHash
+			);
+		},
+
+		onItemSelect: function(oEvent) {
+			debugger;
+			var sKey = oEvent.getParameter("item").getKey();
+			Log.info(this.getView().getControllerName(), "onItemSelect Key=" + sKey);
+
+			this.getOwnerComponent().getRouter().navTo(sKey);
 		}
 	});
-
 });

@@ -27,3 +27,7 @@ sap.ui.define([
 
 			// start
 			oMockServer.start();
+		}
+	};
+
+});

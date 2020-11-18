@@ -1,12 +1,19 @@
 {
-  "name": "WalkthroughTutorial",
+  "name": "UI5",
   "private": true,
   "version": "1.0.0",
   "author": "SAP SE",
-  "description": "UI5 Demo App - Walkthrough Tutorial",
+  "description": "UI5",
+  "scripts": {
+    "proxy": "node proxy.js"
+  },
+  "devDependencies": {
+    "cors-anywhere": "2.8.5"
+  },
   "dependencies": {
     "@openui5/sap.m": "^1",
     "@openui5/sap.ui.core": "^1",
-    "@openui5/themelib_sap_fiori_3": "^1"
+    "@openui5/themelib_sap_fiori_3": "^1",
+    "cors": "^2.8.5"
   }
 }
