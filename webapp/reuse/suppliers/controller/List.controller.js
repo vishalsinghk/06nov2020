@@ -14,9 +14,11 @@ sap.ui.define([
 				.navTo("detail", {
 					id: oBindingContext.getProperty("SupplierID")
 				}, {
+					
 					products: {
 						route: "list",
 						parameters: {
+							
 							// encode the path because it could contain "/" which
 							// isn't allowed to use as pattern parameter directly
 							basepath: encodeURIComponent(oBindingContext.getPath())

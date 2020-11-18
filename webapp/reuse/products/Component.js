@@ -16,6 +16,7 @@ sap.ui.define([
 			// it should handle the navigation to detail page by itself. It attaches to
 			// its own "toProduct" event and navigates to the detail page
 			if (!oParentComponent) {
+				debugger;
 				this.attachEvent("toProduct", function(oEvent) {
 					var sProductID = oEvent.getParameter("productID");
 					this.getRouter().navTo("detail", {

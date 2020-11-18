@@ -10,7 +10,7 @@ sap.ui.define([
 			debugger;
 			// create
 			var oMockServer = new MockServer({
-				rootUri: "https://services.odata.org/V2/Northwind/Northwind.svc/"
+				rootUri: "https://cors-anywhere.herokuapp.com/http://services.odata.org/V2/Northwind/Northwind.svc"
 			});
 
 			var oUriParameters = UriParameters.fromQuery(window.location.search);

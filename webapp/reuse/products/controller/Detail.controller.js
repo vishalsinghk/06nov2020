@@ -40,6 +40,7 @@ sap.ui.define([
 						this.getView().setBusy(true);
 					}.bind(this),
 					dataReceived: function() {
+						debugger;
 						Log.info(this.getView().getControllerName(), "_bindData dataReceived");
 						this.getView().setBusy(false);
 						if (this.getView().getBindingContext() === null) {

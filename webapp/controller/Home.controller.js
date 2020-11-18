@@ -3,8 +3,10 @@ sap.ui.define([
 	"sap/base/Log",
 	"sap/ui/model/json/JSONModel"
 ], function(Controller, Log, JSONModel) {
+	debugger;
 	"use strict";
 	return Controller.extend("sap.ui.core.sample.RoutingNestedComponent.controller.Home", {
+		
 		onInit: function() {
 			Log.info(this.getView().getControllerName(), "onInit");
 
