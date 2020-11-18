@@ -2,14 +2,21 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:tnt="sap.tnt"
-	displayBlock="true">
+		height="100%"
+	displayBlock="true"
+	class="side-navigation-demo">	
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
 			<tnt:ToolHeader>
+					<Button
+					text=""
+					icon="sap-icon://menu2"
+					press=".onCollapseExpandPress" />
 				<ToolbarSpacer />
 				<Title text="{= ${titleModel>/title} || ${i18n>appTitle}}" />
 				<ToolbarSpacer />
 			</tnt:ToolHeader>
+			
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation itemSelect=".onItemSelect">
@@ -29,6 +36,10 @@
 						id="productsItem"
 						icon="sap-icon://product"
 						key="products" />
+						<tnt:NavigationListItem text="3Dviewer"
+						id="3Dviewerview"
+						icon="sap-icon://product"
+						key="3Dviewer" />
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
 		</tnt:sideContent>

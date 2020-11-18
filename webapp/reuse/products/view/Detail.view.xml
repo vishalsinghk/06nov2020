@@ -75,7 +75,10 @@
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Image">
-							<f:fields>
+							<f:fields  hAlign="Center"
+							visible="true"
+							width="145px">
+							
 								<Image src="{path:'Category/Picture', formatter:'.base64StringToImage'}" />
 							</f:fields>
 						</f:FormElement>

@@ -6,10 +6,11 @@ sap.ui.define([
 
 	return Controller.extend("sap.ui.core.sample.RoutingNestedComponent.reuse.categories.controller.List", {
 		onPressListItem: function(oEvent) {
+			debugger;
 			Log.info(this.getView().getControllerName(), "onPressListItem");
 
 			var oBindingContext = oEvent.getSource().getBindingContext();
-
+			debugger;
 			// navigate to the detail page. Because the products component is
 			// integrated in the detail page, it's also needed to provide route
 			// information for the deeply nested products component

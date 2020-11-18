@@ -1,5 +1,6 @@
 {
 	"_version": "1.21.0",
+	"start_url":"index.html",
 	"sap.app": {
 		"id": "sap.ui.core.sample.RoutingNestedComponent",
 		"type": "application",
@@ -108,11 +109,6 @@
 			},
 			"routes": [
 				{
-					"name": "home",
-					"pattern": "",
-					"target": "home"
-				},
-				{
 					"name": "suppliers",
 					"pattern": "suppliers",
 					"target": {
@@ -120,6 +116,17 @@
 						"prefix": "s"
 					}
 				},
+				{
+					"name": "3Dviewer",
+					"pattern": "3Dviewer",
+					"target": "3Dviewer"
+				},
+				{
+					"name": "home",
+					"pattern": "",
+					"target": "home"
+				},
+				
 				{
 					"name": "categories",
 					"pattern": "categories",
@@ -143,6 +150,12 @@
 					"id": "home",
 					"name": "Home",
 					"title": "Home"
+				},
+				"3Dviewer": {
+					"type": "View",
+					"id": "3Dviewerview",
+					"name": "3Dviewer",
+					"title": "3Dviewer"
 				},
 				"suppliers": {
 					"type": "Component",
@@ -181,8 +194,10 @@
 					"css/style.css",
 					"controller/App.controller.js",
 					"controller/Home.controller.js",
+					"controller/3Dviewer.controller.js",
 					"img/diagram.jpg",
 					"view/Home.view.xml",
+					"view/3Dviewer.view.xml",
 					"view/App.view.xml",
 					"view/NotFound.view.xml",
 					"i18n/i18n.properties",

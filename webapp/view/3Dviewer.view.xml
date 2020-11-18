@@ -1,0 +1,26 @@
+<mvc:View controllerName="sap.ui.core.sample.RoutingNestedComponent.controller.3Dviewer"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true">
+	
+	<Page
+		class="sapUiContentPadding">
+		<content>
+			<FormattedText htmlText="{/recipient/HTML}" />
+              <Button
+		text="Enabled"
+		press=".onEnabled"/>
+            <Button
+		text="Disabled"
+		press=".onDisabled"/>
+          
+	<Input
+		value="{/recipient/name}"
+  
+		enabled="{/recipient/enabled}"
+		
+		width="60%"/>
+			<!-- <Image src="img/diagram.jpg" class="sapUiMediumMarginTopBottom maxWidth100" /> -->
+		</content>
+	</Page>
+</mvc:View>

@@ -3,18 +3,22 @@ sap.ui.define([
 	"sap/base/Log",
 	"sap/ui/model/json/JSONModel"
 ], function(Controller, Log, JSONModel){
-	//debugger;
+	debugger;
 	"use strict";
 	return Controller.extend("sap.ui.core.sample.RoutingNestedComponent.controller.App", {
 		onInit: function(){
+			
 			Log.info(this.getView().getControllerName(), "onInit");
-
+			
 			this.getOwnerComponent().getRouter().attachRouteMatched(this._onRouteMatched, this);
+		
 			this.getOwnerComponent().getRouter().attachBypassed(this._onBypassed, this);
-
+			
 			var oTitlesModel = new JSONModel();
 			this.getView().setModel(oTitlesModel, "titleModel");
+			
 			this.getOwnerComponent().getRouter().attachTitleChanged(function (oEvent) {
+				
 				oTitlesModel.setData(oEvent.getParameters());
 			});
 		},
@@ -47,6 +51,12 @@ sap.ui.define([
 			Log.info(this.getView().getControllerName(), "onItemSelect Key=" + sKey);
 
 			this.getOwnerComponent().getRouter().navTo(sKey);
-		}
+		},
+		onCollapseExpandPress: function () {
+			debugger;
+			var oSideNavigation = this.byId("navigationList");
+			var bExpanded = oSideNavigation.getExpanded();
+			oSideNavigation.setExpanded(!bExpanded);
+		},
 	});
 });
